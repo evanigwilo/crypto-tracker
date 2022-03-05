@@ -1,7 +1,14 @@
+import Box from "@mui/material/Box";
+
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div>Learn React </div>
+    <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
+
+      <NavBar />
+      
+    </Box>
   );
 }
 
