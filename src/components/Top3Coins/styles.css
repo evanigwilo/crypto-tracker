@@ -1,1 +1,92 @@
-/* custom styles */
+:root {
+  --rotate: perspective(10cm) rotateX(50deg) rotateZ(35deg);
+}
+.scaledown {
+  transition-duration: 0.3s;
+  transform: scale(0);
+}
+.scaleup-set {
+  opacity: 0;
+  transition-duration: 0.01s !important;
+  transform: scale(1) var(--rotate) translateZ(-5px);
+}
+.scaleup {
+  transition-duration: 0.3s !important;
+  transition-timing-function: ease;
+  transform: scale(1) var(--rotate) translateZ(0px);
+}
+.scalewide {
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transform: scale(1) !important;
+}
+.rotate {
+  transform: scale(1) var(--rotate) translateZ(0px);
+}
+.expandwidth,
+.expandheight {
+  transition-timing-function: ease-out;
+}
+.expandwidth {
+  width: 200px !important;
+}
+.expandheight {
+  height: 150px !important;
+}
+.rotateborder,
+.centerborder {
+  position: absolute;
+  border-top: 4px dotted;
+}
+.rotateborder {
+  width: calc(200px - 25px);
+  height: 100%;
+  left: 25px;
+  top: 20px;
+}
+.centerborder {
+  width: 200px;
+  top: 50px;
+}
+.rotateborder::before,
+.centerborder::before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  border-left: 4px dotted;
+  transform-origin: center left;
+  z-index: -1;
+  /* background-color: blue; */
+}
+.rotateborder::before {
+  left: -17px;
+  bottom: 101%;
+  transform: rotateZ(135deg);
+}
+.centerborder::before {
+  left: 50%;
+  bottom: 100%;
+  /* transform: rotateZ(135deg); */
+}
+.selected {
+  cursor: pointer;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  height: 100px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  /* background-color: red; */
+  /* opacity: 0.5;  */
+}
+.multiline {
+  line-height: 1.3;
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+}
