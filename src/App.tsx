@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import { getCoinData } from "./api/coinGeckoAPI";
 
 import Top3Coins from "./components/Top3Coins";
+import SearchCoins from "./components/SearchCoins";
 import { CoinDataTye } from "./types";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             style={{
               display: "flex",
               justifyContent: "center",
-              height: "275px",
+              height: "215px",
               position: "relative",
             }}
           >
@@ -37,6 +38,8 @@ function App() {
           </div>
         )
       }
+
+      <SearchCoins />
 
     </Box>
   );
