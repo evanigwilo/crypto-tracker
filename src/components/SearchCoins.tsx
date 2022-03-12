@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
 
 import { useQueryClient } from 'react-query';
 
@@ -7,6 +8,7 @@ import { searchCoin } from '../api/coinGeckoAPI';
 
 import TextFieldCSS from './TextFieldCSS';
 import debounce from '../utils/debounce';
+import CoinRow from './CoinRow';
 
 export default function SearchCoins() {
     const queryClient = useQueryClient();
@@ -48,6 +50,12 @@ export default function SearchCoins() {
                 // value={input}
                 onChange={searchBar}
             />
+
+            <Grid container spacing={0} columns={1} sx={{ maxWidth: 'md' }} >
+                <Grid item xs={1}>
+                    <CoinRow />
+                </Grid>
+            </Grid>
         </>
     );
 }
