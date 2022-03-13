@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 
+import numeral from "numeral";
+
 import NavBar from "./components/NavBar";
 
 import { getCoinData } from "./api/coinGeckoAPI";
@@ -8,6 +10,27 @@ import { getCoinData } from "./api/coinGeckoAPI";
 import Top3Coins from "./components/Top3Coins";
 import SearchCoins from "./components/SearchCoins";
 import { CoinDataTye } from "./types";
+
+numeral.register("locale", "us", {
+  delimiters: {
+    thousands: ",",
+    decimal: ".",
+  },
+  abbreviations: {
+    thousand: "k",
+    million: "M",
+    billion: "B",
+    trillion: "T",
+  },
+  ordinal: function (number) {
+    return number === 1 ? "er" : "ème";
+  },
+  currency: {
+    symbol: "$",
+  },
+});
+// switch between locales
+numeral.locale("us");
 
 function App() {
   const [coinData, setCoinData] = useState<CoinDataTye[]>();
