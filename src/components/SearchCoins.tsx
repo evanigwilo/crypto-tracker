@@ -9,6 +9,7 @@ import { searchCoin } from '../api/coinGeckoAPI';
 import TextFieldCSS from './TextFieldCSS';
 import debounce from '../utils/debounce';
 import CoinRow from './CoinRow';
+import CoinGrid from './CoinGrid';
 
 export default function SearchCoins() {
     const queryClient = useQueryClient();
@@ -51,11 +52,17 @@ export default function SearchCoins() {
                 onChange={searchBar}
             />
 
+            {/* Render Header */}
             <Grid container spacing={0} columns={1} sx={{ maxWidth: 'md' }} >
                 <Grid item xs={1}>
                     <CoinRow />
                 </Grid>
             </Grid>
+
+            {/* Render Coin Rows */}
+            {
+                refresh && <CoinGrid coinIds={coinIds.current} />
+            }
         </>
     );
 }
