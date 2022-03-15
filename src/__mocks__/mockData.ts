@@ -1,4 +1,5 @@
 import { CoinDataTye, AxiosConfigType, DescriptionType, PriceVolumeType } from "../types";
+import { waitFor } from "@testing-library/react";
 
 const sparkline_in_7d = {
     "price": [
@@ -293,3 +294,30 @@ export const axiosGet = (url: string, config: AxiosConfigType) => {
             return Promise.reject(new Error("not found"));
     }
 };
+
+export const mockIntersectionObserver = () =>
+    jest.fn().mockReturnValue({
+        observe: () => null,
+        unobserve: () => null,
+        disconnect: () => null,
+    });
+
+export const advanceLoading = () =>
+    waitFor(() => {
+        // Advance Loader to 100%
+        jest.advanceTimersByTime(1100);
+        // Advance Hiding Loader
+        jest.advanceTimersByTime(800);
+        // setTimeout should have been called
+        expect(setTimeout).toHaveBeenCalled();
+    });
+
+export const mockResizeObserver = () =>
+    Object.defineProperty(global, "ResizeObserver", {
+        writable: true,
+        value: jest.fn().mockImplementation(() => ({
+            observe: jest.fn(() => "Mocking works"),
+            unobserve: jest.fn(),
+            disconnect: jest.fn(),
+        })),
+    });
