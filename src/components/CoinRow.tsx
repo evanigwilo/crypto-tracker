@@ -14,6 +14,8 @@ import numeral from 'numeral';
 
 import CoinImageDetails from './CoinImageDetails';
 import { CoinDataTye } from '../types';
+import LineGraph from './LineGraph';
+import LineGraphDetailed from './LineGraphDetailed';
 
 const IconButtonCSS = styled(IconButton)({
     display: 'unset',
@@ -115,7 +117,7 @@ export default function CoinRow({ coinInfo }: { coinInfo?: CoinDataTye; }) {
                         {changeIcon}
                     </div>
 
-                    <div>LineGraph</div>
+                    <LineGraph />
 
                 </Container>
             </IconButtonCSS>
@@ -124,7 +126,7 @@ export default function CoinRow({ coinInfo }: { coinInfo?: CoinDataTye; }) {
                 {
                     showDetails && <Collapse>
                         <div data-testid={coinInfo.id + '-graph-detail-container'} style={{ width: '100%' }}>
-                            <div>LineGraphDetailed</div>
+                            <LineGraphDetailed />
                         </div>
                     </Collapse>
                 }
