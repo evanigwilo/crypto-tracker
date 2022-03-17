@@ -117,7 +117,7 @@ export default function CoinRow({ coinInfo }: { coinInfo?: CoinDataTye; }) {
                         {changeIcon}
                     </div>
 
-                    <LineGraph />
+                    <LineGraph coinID={coinInfo.id} sparkline={coinInfo.sparkline_in_7d.price} />
 
                 </Container>
             </IconButtonCSS>
