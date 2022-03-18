@@ -126,7 +126,7 @@ export default function CoinRow({ coinInfo }: { coinInfo?: CoinDataTye; }) {
                 {
                     showDetails && <Collapse>
                         <div data-testid={coinInfo.id + '-graph-detail-container'} style={{ width: '100%' }}>
-                            <LineGraphDetailed />
+                            <LineGraphDetailed coinName={coinInfo.name} coinID={coinInfo.id} />
                         </div>
                     </Collapse>
                 }

@@ -1,11 +1,13 @@
-import { cleanup, render, screen, act } from '@testing-library/react';
+import { cleanup, render, screen, act, waitFor, fireEvent } from '@testing-library/react';
+
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import numeral from 'numeral';
 
 import mockedAxios from "axios";
 import ThemeContext from '../../context/themeContext';
 import CoinRow from "../../components/CoinRow";
-import { axiosGet, coinSamples } from '../../__mocks__/mockData';
+import { axiosGet, coinSamples, mockResizeObserver } from '../../__mocks__/mockData';
 
 describe("Coin Rows", () => {
 
@@ -112,5 +114,30 @@ describe("Coin Rows", () => {
         expect(mockedAxios.get).toBeCalledTimes(0);
     });
 
-    it.todo("should show detailed graph when clicked");
+    it("should show detailed graph when clicked", async () => {
+        //Mock Resize Observer
+        mockResizeObserver();
+
+        //Render a row
+        await act(async () => {
+            const queryClient = new QueryClient();
+            render(
+                <ThemeContext>
+                    <QueryClientProvider client={queryClient}>
+                        <CoinRow coinInfo={coinInfo} />
+                    </QueryClientProvider>
+                </ThemeContext>
+            );
+        });
+        //Expect deatiled graph to show when a row is clicked
+        const row = screen.getByTestId(coinInfo.id + '-row');
+        await waitFor(() => {
+            fireEvent.click(row);
+        });
+        const graph = screen.getByTestId(coinInfo.id + '-graph-detail-container');
+        expect(graph).toBeVisible();
+
+        //Expect 1 API call for detailed LineGraph after row is clicked
+        expect(mockedAxios.get).toBeCalledTimes(1);
+    });
 });
