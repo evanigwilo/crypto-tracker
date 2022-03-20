@@ -10,6 +10,7 @@ import { getCoinData } from "./api/coinGeckoAPI";
 import Top3Coins from "./components/Top3Coins";
 import SearchCoins from "./components/SearchCoins";
 import { CoinDataTye } from "./types";
+import Loader from "./components/Loader";
 
 numeral.register("locale", "us", {
   delimiters: {
@@ -39,32 +40,42 @@ function App() {
     getCoinData().then((data) => setCoinData(data));
   }, []);
 
+  const style: React.CSSProperties = {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    display: "grid",
+    placeItems: "center",
+  };
+
   return (
-    <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
+    <Loader hideProgress={coinData !== undefined} style={style}>
+      <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
 
-      <NavBar />
+        <NavBar />
 
-      {
-        coinData && (
-          <div
-            data-testid="Top3Coins"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              height: "215px",
-              position: "relative",
-            }}
-          >
-            <Top3Coins position="left" coinInfo={coinData[1]} />
-            <Top3Coins coinInfo={coinData[0]} />
-            <Top3Coins position="right" coinInfo={coinData[2]} />
-          </div>
-        )
-      }
+        {
+          coinData && (
+            <div
+              data-testid="Top3Coins"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                height: "215px",
+                position: "relative",
+              }}
+            >
+              <Top3Coins position="left" coinInfo={coinData[1]} />
+              <Top3Coins coinInfo={coinData[0]} />
+              <Top3Coins position="right" coinInfo={coinData[2]} />
+            </div>
+          )
+        }
 
-      <SearchCoins />
+        <SearchCoins />
 
-    </Box>
+      </Box>
+    </Loader >
   );
 }
 
