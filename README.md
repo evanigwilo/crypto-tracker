@@ -1,46 +1,76 @@
-# Getting Started with Create React App
+# Cryptocurrency Price Tracker 🚀
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
+A React.js application that displays price, volume, coin-percentage & market capital with other relevant details and other information for all the cryptocurrencies in the world.
 
-In the project directory, you can run:
+You can check the [Live Demo](https://evanigwilo.github.io/crypto-tracker)
 
-### `yarn start`
+<p align="middle">
+  <img src="/capture/1.png" width="48%" height='512px' />
+  <img src="/capture/2.png" width="48%" height='512px' />
+  <!-- <img src="/capture/3.png" width="80%" height='512px' /> -->
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
+## Why I built this
+I built this app as the cryptocurrency markets are currently all over the place and it's really a decentralized blockchain technology as it allows for transactions to be made reliably, but without third parties.<br/>
+The goal was to address the needs of cryptocurrency investors and traders by providing real-time information about cryptocurrency prices, supply fluctuations and market capitalization.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
+- CoinGecko [REST API](https://www.coingecko.com/en/api/documentation)
+- React
+- React Hooks
+- React Testing
+- Axios
+- Material UI
+- React Query
+- Chart JS
+- Others...
 
-### `yarn test`
+## Features
+- _Interactive graph_. 
+- _Light/Dark mode switch_. 
+- _Infinite Scroll_. 
+- _Fully Responsive_. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
+## Installation
+1. Fork this repo into your own GitHub
+2. or Clone the repo to your local machine
 
-### `yarn build`
+```bash
+# Change to the desired directory
+$ cd <desired-directory>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Clone the repo
+$ git clone https://github.com/evanigwilo/crypto-tracker.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Change to the project directory
+$ cd crypto-tracker
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Install dependencies
+```bash
+npm install or yarn install
+```
 
-### `yarn eject`
+4. Run app
+```bash
+npm run start or yarn run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
+## Local Development
+After this initial set-up, client should be running at : `http://localhost:3000/`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
+## References
+> [Coingecko](https://www.coingecko.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> [Live Coin Watch](https://www.livecoinwatch.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+## License
+Cryptocurrency Price Tracker is released under the [MIT License](https://choosealicense.com/licenses/mit/)
